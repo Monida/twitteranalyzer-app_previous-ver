@@ -1,0 +1,72 @@
+<!--author: Monica Gomez>-->
+<!--version of analyzing.html: v1.0-->
+<!--launch date: October 2019-->
+
+<!doctype html>
+<title>TwitterAnalyzer</title>
+<link rel=stylesheet type=text/css href='{{ url_for('static',filename='style.css')}}'>
+<style>
+  input[type=submit]{background-color: #03cea4;
+                     border: none;
+                     color: white;
+                     cursor: pointer;
+                     padding: 3px 6px;}
+</style>
+<div class=page>
+	<section id="resultsummary">
+  		<h1>Search word: {{query}}</h1>
+	</section>
+	<section id="results">
+   		<p>
+  			Please wait a moment, your query is being analyzed.
+
+  			Press "Refresh" after the countdown.
+  		</p>
+  		<p id="demo"></p>
+
+		<script>
+			// Code inspired from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_countdown 
+			// Set the date we're counting down to
+			var d = new Date();
+			var year = d.getFullYear()+1;
+			var month = d.getMonth();
+			var day = d.getDay();
+			var hour = d.getHours();
+			var minute = d.getMinutes()+1;
+			var second = d.getSeconds();
+			var countDownDate = new
+
+			Date(year,month,day,hour,minute,second).getTime();
+
+			// Update the count down every 1 second
+			var x = setInterval(function() {
+
+			  // Get today's date and time
+			  var now = new Date().getTime();
+			    
+			  // Find the distance between now and the count down date
+			  var distance = countDownDate - now;
+			    
+			  // Time calculations for days, hours, minutes and seconds
+			  
+			  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			    
+			  // Output the result in an element with id="demo"
+			  document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+			    
+			  // If the count down is over, enable the refresh button 
+			  if (minutes == 0 && seconds == 0) {
+			    clearInterval(x);
+			    document.getElementById("Refresh").disabled = false;
+			    
+			  }
+			}, 1000);
+		</script>
+  		<form id="analyzingform" method= "POST" action="show_analysis">
+    		<input id="Refresh" type="submit" value="Refresh" disabled>
+		</form>
+  	</section>
+
+</div>
+</html>

@@ -1,0 +1,123 @@
+<!--author: Monica Gomez>-->
+<!--version of returnquery.html: v1.0-->
+<!--launch date: October 2019-->
+
+<!doctype html>
+<title>TwitterAnalyzer</title>
+<link rel=stylesheet type=text/css href='{{ url_for('static',filename='style.css')}}'>
+<style>
+  input[type=submit]{background-color: #03cea4;
+                     border: none;
+                     color: white;
+                     cursor: pointer;
+                     padding: 3px 6px;}
+  nav.sample_tweets{height: 200px;
+                    width:800px;
+                    overflow:scroll;}
+</style>
+<div class=page>
+  		<h1>Search word: {{query}}</h1>
+  		<p>
+  			<b>Number of tweets found:</b> {{num_of_tweets}} 
+  		</p>
+  		<p>
+  			<h2>Popular Hashtags</h2><br>
+
+        <img src="{{hashtags}}" width="500" class="center"/><br>
+      
+        <h2>Tweets clusters</h2><br>
+        <img src="{{clustergram}}" width="500" class="center"/> <br>
+
+        <h2>Tweets samples by cluster</h2><br>
+
+          <h3>Cluster 1</h3>
+
+          <!--<select name = "cluster1" style="width:600px" multiple>-->
+            <!--{% for tweet in tweets_cltr1 %}-->
+            <!--<option value= "{{tweet}}" >{{tweet}}</option>"-->
+            <!--{% endfor %}-->
+          <!--</select>-->
+          
+          <nav class="sample_tweets"enter">
+            <ul>
+              {% for tweet in tweets_cltr1 %}
+              <li value= "{{tweet}}">{{tweet}}</li>
+              {% endfor %}
+            </ul>
+          </nav>
+
+          <h3>Cluster 2</h3>
+          
+          <nav class="sample_tweets"enter">
+            <ul>
+              {% for tweet in tweets_cltr2 %}
+              <li value= "{{tweet}}">{{tweet}}</li>
+              {% endfor %}
+            </ul>
+          </nav>
+
+          <h3>Cluster 3</h3>
+          
+          <nav class="sample_tweets"enter">
+            <ul>
+              {% for tweet in tweets_cltr3 %}
+              <li value= "{{tweet}}">{{tweet}}</li>
+              {% endfor %}
+            </ul>
+          </nav>
+          
+          <h3>Cluster 4</h3>
+          
+          <nav class="sample_tweets"enter">
+            <ul>
+              {% for tweet in tweets_cltr4 %}
+              <li value= "{{tweet}}">{{tweet}}</li>
+              {% endfor %}
+            </ul>
+          </nav>
+          
+          <h3>Cluster 5</h3>
+          
+          <nav class="sample_tweets"enter">
+            <ul>
+              {% for tweet in tweets_cltr5 %}
+              <li value= "{{tweet}}">{{tweet}}</li>
+              {% endfor %}
+            </ul>
+          </nav>
+
+        <h2>Top words</h2><br>
+
+        <p>Click on topic for more insights.</p>
+  			<table>
+          <tr>
+            <td>
+            <form id="selecttopic" method="POST" action="moreinsights">
+              <table>
+                <tr><td><input type="submit" name="insights" value="topic 1" class="topic"></td></tr>
+                <tr><td><input type="submit" name="insights" value="topic 2" class="topic"></td></tr>
+                <tr><td><input type="submit" name="insights" value="topic 3" class="topic"></td></tr>
+                <tr><td><input type="submit" name="insights" value="topic 4" class="topic"></td></tr>
+                <tr><td><input type="submit" name="insights" value="topic 5" class="topic"></td></tr>  
+              </table>
+                <td>
+                {{topwords_table|safe}} 
+                </td>  
+            </form>
+            </td>
+          </tr>
+        </table>
+        <br>
+  			<br>
+
+        <h2>Likely topic labels for each cluster</h2><br>
+
+          {{topics_table|safe}} <br><br>
+
+  		</p>
+
+  		<form id="returnresultsform" method="POST" action="/">
+  			<input type="submit" id="new_search" value="New Search">
+  		</form>
+</div>
+</html>

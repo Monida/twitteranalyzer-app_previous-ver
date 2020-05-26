@@ -1,0 +1,16 @@
+<!--author: Monica Gomez>-->
+<!--version of error.html: v1.0-->
+<!--launch date: October 2019-->
+
+<!doctype html>
+<title>TwitterAnalyzer</title>
+<link rel=stylesheet type=text/css href='{{ url_for('static',filename='style.css')}}'>
+<div class=page>
+   		<p>
+  			Sorry no tweets were found with that query. Try again.
+  		</p>
+  		<form id="returnhome" method="POST" action="error">
+  			<input type="submit" id="new_search" value="New Search" action='/'>
+  		</form>
+</div>
+</html>

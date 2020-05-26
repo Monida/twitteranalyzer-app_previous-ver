@@ -1,0 +1,39 @@
+<!--author: Monica Gomez>-->
+<!--version of moreinsights.html: v1.0-->
+<!--launch date: October 2019-->
+
+<!doctype html>
+<title>TwitterAnalyzer</title>
+<link rel=stylesheet type=text/css href='{{ url_for('static',filename='style.css')}}'>
+<style>
+  input[type=submit]{background-color: #03cea4;
+                     border: none;
+                     color: white;
+                     cursor: pointer;
+                     padding: 3px 6px;}
+</style>
+<div class=page2>
+  		<h1>Topic: {{topic}}</h1>
+  		<p>
+  			<b>Total number of tweets found:</b> {{num_of_tweets}} <br>
+
+        <b>Number of tweets for topic "{{topic}}" :</b> {{num_of_tweets_per_topic}} 
+  		</p>
+      <p>
+        <h2>Most frequent words</h2>
+        <img src="{{wordcloud}}" width="500" class="center"/>
+      </p>
+      <p>
+        <h2>General polarity</h2>
+       <img src="{{polarity}}" width="500" class="center"/>
+      </p>  
+      <p>
+        <h2>General objectivity</h2>
+       <img src="{{objectivity}}" width="500" class="center"/>
+      </p>  
+
+  		<form id="moreinsightsform" method="GET" action="show_analysis">
+  			<input type="submit" id="back" value="back">
+  		</form>
+</div>
+</html>
