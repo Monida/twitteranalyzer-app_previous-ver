@@ -1,0 +1,6 @@
+#Don't track the changes in the following directories
+__pycache__
+.ipynb_checkpoints
+Test_nb/.ipynb_checkpoints
+Test_nb/sentiment140.csv
+Test_nb/short_entiment140.csv
